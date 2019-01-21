@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project can be executed running the following commands
 
-Things you may want to cover:
+* This commmand will create teh database
 
-* Ruby version
+docker run --name url_shortener_api_development -e POSTGRES_USER=url_short -e POSTGRES_DB=url_shortener_api_development -e POSTGRES_PASSWORD='url_short!23' -d -p 5431:5432 postgres
 
-* System dependencies
+docker-compose build
+docker-compose up
 
-* Configuration
+And now the project can be accessed on 0.0.0.0:3000
 
-* Database creation
+Use Cases
 
-* Database initialization
+* Create short URL
 
-* How to run the test suite
+curl -X POST \
+  'http://0.0.0.0:3000/url_shortener?original_url=http://www.google.com' \
+  -H 'Postman-Token: 7f677ba0-4bc7-4e7a-94fb-06f891c4e313' \
+  -H 'cache-control: no-cache'
+  
+  
+* Go to original URL using shortened url
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+curl -X GET \
+  http://0.0.0.0:3000/url_shortener/MP8ldcil7n8= \
+  -H 'Postman-Token: c29b9829-cade-4840-a184-43b59a7491f6' \
+  -H 'cache-control: no-cache'
+  
+  
