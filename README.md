@@ -2,7 +2,7 @@
 
 This project can be executed running the following commands
 
-* This commmand will create teh database
+* This commmand will create the database
 
 docker run --name url_shortener_api_development -e POSTGRES_USER=url_short -e POSTGRES_DB=url_shortener_api_development -e POSTGRES_PASSWORD='url_short!23' -d -p 5431:5432 postgres
 
